@@ -1,30 +1,28 @@
-# Vitale Odontologia — Demo
+# Vitale Odonto Demo
 
-Repositório limpo da nova demo institucional da Vitale Odontologia.
+## Fluxo oficial
 
-## Fonte de verdade
+- Repositório: `Urimash9/vitale-odonto-demo`
+- Branch base/checkpoint: `main`
+- Branch ativa da Build 01: `build-01-vitale-clean`
+- Checkpoint congelado: `checkpoint-vitale-base.html`
+- Implementação ativa: `index.html`
+- Vercel: projeto novo conectado a este repositório
 
-- `main` preserva a referência-base.
-- `checkpoint-vitale-base.html` é o checkpoint visual e estrutural congelado.
-- `index.html` aponta a raiz da demo para o checkpoint enquanto a Build 01 ainda não substituiu a Home.
-- desenvolvimento deve ocorrer em `build-01-vitale-clean`.
+## Regra de segurança
 
-## Direção do checkpoint
+O arquivo `checkpoint-vitale-base.html` é a referência congelada do projeto e não deve ser modificado nas builds de refinamento. As evoluções acontecem em `index.html` dentro de `build-01-vitale-clean`.
 
-O checkpoint fixa a linguagem-base aprovada para a próxima Build:
+O repositório legado `Urimash9/vitale-odontologia-demo` não faz parte deste fluxo e não deve ser usado ou modificado.
 
-- paleta marfim / porcelana / champagne / madeira / marrom-grafite;
-- composição editorial e assimétrica;
-- menos dependência de cards;
-- percurso clínico inspirado de forma abstrata em endodontia;
-- aros/lentes como referência a precisão e à arquitetura da clínica;
-- galeria em degraus para os ambientes;
-- Amanda como autoridade humana sem transformar a Vitale em marca pessoal;
-- placeholders estruturais para assets reais;
-- responsividade com zonas seguras de tipografia.
+## Build 01.1 — assets reais
 
-## Regra de preservação
+Assets reais já curados e versionados para integração na Build 01.1:
 
-Não editar `checkpoint-vitale-base.html` durante as builds. Use-o como referência e desenvolva a Home em `index.html` na branch de trabalho.
+- `assets/images/vitale/hero-amanda.webp`
+- `assets/images/vitale/amanda-portrait-bw.webp`
+- `assets/images/vitale/amanda-clinical-action.webp`
+- `assets/images/vitale/clinic-reception.webp`
+- `assets/images/vitale/clinic-hall.webp`
 
-O repositório legado `Urimash9/vitale-odontologia-demo` não faz parte deste fluxo.
+Não utilizar imagens de antes/depois nesta etapa. Os demais slots podem permanecer como placeholders até nova curadoria.
