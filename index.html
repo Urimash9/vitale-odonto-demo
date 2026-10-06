@@ -62,6 +62,15 @@
       content:attr(data-label);position:absolute;left:1rem;bottom:1rem;
       font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe)
     }
+    .asset--filled:has(img)::after{display:none}
+    .asset--filled img{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block
+    }
+    .hero-photo img{object-position:50% 35%}
+    .experience-photo img{object-position:50% 50%}
+    .amanda-photo img{object-position:50% 28%}
+    .precision-photo img{object-position:50% 42%}
+    .clinic-b img{object-position:50% 50%}
 
     header{
       position:sticky;top:0;z-index:20;background:rgba(247,243,236,.86);
@@ -183,6 +192,9 @@
       .pillar-track{grid-template-columns:1fr 1fr}
       .pillar-track::before{display:none}
       .pillar:nth-child(even){transform:none}
+      .hero-photo img{object-position:50% 30%}
+      .amanda-photo img{object-position:50% 24%}
+      .precision-photo img{object-position:50% 38%}
     }
 
     @media (max-width:640px){
@@ -206,6 +218,11 @@
       .clinic-a{grid-column:1/11;grid-row:1/7}.clinic-b{grid-column:5/13;grid-row:7/11}.clinic-c{grid-column:1/7;grid-row:11/14}.clinic-d{grid-column:6/13;grid-row:14/17}
       .map-shape{min-height:340px;margin-top:1rem}
       .footer-grid{flex-direction:column}
+      .hero-photo img{object-position:52% 28%}
+      .experience-photo img{object-position:50% 46%}
+      .amanda-photo img{object-position:50% 20%}
+      .precision-photo img{object-position:52% 36%}
+      .clinic-b img{object-position:50% 45%}
     }
 
     @media (prefers-reduced-motion:reduce){
@@ -240,8 +257,8 @@
             <a class="btn secondary" href="#tratamentos">Conhecer tratamentos</a>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="placeholder hero-photo" data-label="slot · hero Amanda"></div>
+        <div class="hero-visual">
+          <div class="placeholder asset--filled hero-photo" data-label="slot · hero Amanda" data-asset-slot="hero-amanda"><img src="assets/images/vitale/hero-amanda.webp" alt="Dra. Amanda Neves Barbosa na Vitale Odontologia" loading="eager" fetchpriority="high" /></div>
           <div class="ring"></div><div class="ring2"></div>
         </div>
       </div>
@@ -258,7 +275,7 @@
 
     <section class="experience">
       <div class="shell experience-grid">
-        <div class="placeholder experience-photo" data-label="slot · arquitetura Vitale"></div>
+        <div class="placeholder asset--filled experience-photo" data-label="slot · arquitetura Vitale" data-asset-slot="clinic-reception"><img src="assets/images/vitale/clinic-reception.webp" alt="Recepção da Vitale Odontologia" loading="lazy" decoding="async" /></div>
         <div class="experience-copy">
           <div class="eyebrow">Experiência Vitale</div>
           <h2>Odontologia que une ciência, precisão e cuidado.</h2>
@@ -292,7 +309,7 @@
 
     <section class="amanda" id="amanda">
       <div class="shell amanda-grid">
-        <div class="placeholder amanda-photo" data-label="slot · retrato Amanda"></div>
+        <div class="placeholder asset--filled amanda-photo" data-label="slot · retrato Amanda" data-asset-slot="amanda-portrait"><img src="assets/images/vitale/amanda-portrait-bw.webp" alt="Dra. Amanda Neves Barbosa" loading="lazy" decoding="async" /></div>
         <div class="amanda-copy">
           <div class="eyebrow">Dra. Amanda Neves Barbosa</div>
           <h2>Autoridade técnica com presença humana.</h2>
@@ -311,7 +328,7 @@
           <p>Ciência, técnica e cuidado trabalhando juntos em cada etapa.</p>
           <div class="precision-tags"><span>Endodontia</span><span>Planejamento</span><span>Tecnologia aplicada</span></div>
         </div>
-        <div class="placeholder precision-photo" data-label="slot · Amanda em atendimento"></div>
+        <div class="placeholder asset--filled precision-photo" data-label="slot · Amanda em atendimento" data-asset-slot="amanda-clinical-action"><img src="assets/images/vitale/amanda-clinical-action.webp" alt="Dra. Amanda Neves Barbosa durante atendimento odontológico" loading="lazy" decoding="async" /></div>
       </div>
     </section>
 
@@ -329,9 +346,9 @@
     <section class="clinic" id="clinica">
       <div class="shell">
         <div class="clinic-head"><div><div class="eyebrow">A clínica</div><h2>Um espaço pensado para acolher.</h2></div><p class="muted">A galeria em degraus deve explorar madeira, champagne, luz quente e detalhes arquitetônicos reais da Vitale.</p></div>
-        <div class="clinic-collage" aria-hidden="true">
+        <div class="clinic-collage">
           <div class="placeholder clinic-a" data-label="slot · recepção"></div>
-          <div class="placeholder clinic-b" data-label="slot · corredor"></div>
+          <div class="placeholder asset--filled clinic-b" data-label="slot · corredor" data-asset-slot="clinic-hall"><img src="assets/images/vitale/clinic-hall.webp" alt="Corredor interno da Vitale Odontologia" loading="lazy" decoding="async" /></div>
           <div class="placeholder clinic-c" data-label="slot · detalhe"></div>
           <div class="placeholder clinic-d" data-label="slot · fachada"></div>
         </div>
