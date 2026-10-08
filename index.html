@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vitale Odontologia — Checkpoint Base</title>
-  <meta name="description" content="Checkpoint visual e estrutural da Vitale Odontologia para orientar a Build 01." />
+  <title>Vitale Odontologia — Monte Carmelo</title>
+  <meta name="description" content="Odontologia com técnica, precisão e cuidado em Monte Carmelo. Conheça a Vitale Odontologia e converse pelo WhatsApp." />
   <style>
     :root{
       --ivory:#F7F3EC;
@@ -40,6 +40,8 @@
     .eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe)}
     h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:.98;margin:0;text-wrap:balance}
     h1{font-size:clamp(3.3rem,7vw,7rem);max-width:10.5ch}
+    .hero-title__precision{color:var(--gold)}
+    .hero-title__natural{color:var(--wood)}
     h2{font-size:clamp(2.3rem,4.7vw,5.2rem);max-width:12ch}
     p{margin:0;max-width:62ch}
     .muted{color:var(--muted)}
@@ -58,10 +60,15 @@
       var(--sand);
       border:1px solid rgba(117,106,95,.12);
     }
-    .placeholder::after{
-      content:attr(data-label);position:absolute;left:1rem;bottom:1rem;
-      font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe)
+    .placeholder::after{display:none}
+    .asset--filled img{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block
     }
+    .hero-photo img{object-position:50% 35%}
+    .experience-photo img{object-position:50% 50%}
+    .amanda-photo img{object-position:50% 28%}
+    .precision-photo img{object-position:50% 42%}
+    .clinic-b img{object-position:50% 50%}
 
     header{
       position:sticky;top:0;z-index:20;background:rgba(247,243,236,.86);
@@ -72,25 +79,28 @@
     .brand small{display:block;font-family:var(--sans);font-size:.52rem;letter-spacing:.24em;margin-top:.28rem}
     .nav-links{display:flex;gap:1.3rem;align-items:center;font-size:.87rem;color:var(--muted)}
 
-    .hero{padding:clamp(4rem,8vw,8rem) 0 5rem;position:relative}
+    .hero{padding:clamp(4rem,8vw,8rem) 0 3.5rem;position:relative}
     .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:center}
     .hero-copy{grid-column:1/8;position:relative;z-index:2}
     .hero-copy .eyebrow{margin-bottom:1.1rem}
     .hero-copy p{margin-top:1.35rem;font-size:clamp(1rem,1.3vw,1.18rem);max-width:48ch}
     .hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
-    .hero-visual{grid-column:8/13;min-height:560px;position:relative}
-    .hero-photo{height:100%;min-height:560px;border-radius:50% 50% 12% 12% / 38% 38% 14% 14%}
+    .hero-copy .hero-actions{flex-wrap:nowrap;align-items:stretch}
+    .hero-copy .hero-actions .btn{white-space:nowrap}
+    .hero-visual{grid-column:8/13;min-height:560px;position:relative;isolation:isolate}
+    .hero-photo{height:100%;min-height:560px;border-radius:50% 50% 12% 12% / 38% 38% 14% 14%;position:relative;z-index:2}
     .ring,.ring2{position:absolute;border:1px solid rgba(184,146,85,.42);border-radius:50%;pointer-events:none}
+    .ring,.ring2{z-index:1}
     .ring{width:78%;aspect-ratio:1;right:-22%;top:-8%}
     .ring2{width:46%;aspect-ratio:1;left:-16%;bottom:4%}
 
-    .pillars{padding:1.5rem 0 5rem}
-    .pillar-track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;padding-top:2rem}
-    .pillar-track::before{content:"";position:absolute;left:1%;right:1%;top:50%;height:1px;background:linear-gradient(90deg,transparent,var(--champagne),transparent)}
-    .pillar{position:relative;background:var(--ivory);padding-right:.8rem}
-    .pillar:nth-child(even){transform:translateY(1.6rem)}
-    .pillar .num{font-family:var(--serif);font-size:1.8rem;color:var(--champagne)}
-    .pillar strong{display:block;font-weight:500;margin-top:.2rem}
+    .pillars{padding:.5rem 0 5rem}
+    .pillar-track{position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:1.15rem clamp(2rem,7vw,6rem);padding:2rem clamp(1rem,6vw,5rem)}
+    .pillar-track::before{display:none}
+    .pillar{position:relative;background:var(--ivory);padding:.5rem 1rem .8rem;border-bottom:1px solid var(--line)}
+    .pillar:nth-child(even){transform:translateY(1.4rem)}
+    .pillar:nth-child(3){padding-left:clamp(2rem,5vw,4rem)}
+    .pillar strong{display:block;font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.55rem);font-weight:400;line-height:1.15}
 
     section{padding:clamp(4.5rem,8vw,8rem) 0}
     .experience{background:var(--porcelain)}
@@ -104,15 +114,13 @@
     .treatments{position:relative}
     .treat-head{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:3rem}
     .treat-path{position:relative;padding:1rem 0}
-    .treat-path::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(var(--champagne),rgba(198,165,109,.12))}
-    .treatment{display:grid;grid-template-columns:1fr 1fr;min-height:150px;align-items:center}
+    .treat-path svg{position:absolute;top:0;bottom:0;left:50%;width:8rem;height:100%;overflow:visible;pointer-events:none;transform:translateX(-50%)}
+    .treat-path path{fill:none;stroke:var(--champagne);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .treat-path .root-accessory{stroke-width:.9;opacity:.76}
+    .treatment{position:relative;display:grid;grid-template-columns:1fr 8rem 1fr;min-height:128px;align-items:center}
     .treatment .inner{max-width:440px;position:relative;padding:1rem 2rem}
-    .treatment:nth-child(odd) .inner{grid-column:1;justify-self:end;text-align:right}
-    .treatment:nth-child(even) .inner{grid-column:2;justify-self:start}
-    .treatment .inner::after{content:"";position:absolute;top:50%;width:10px;height:10px;border:1px solid var(--gold);background:var(--ivory);border-radius:50%}
-    .treatment:nth-child(odd) .inner::after{right:-5px}
-    .treatment:nth-child(even) .inner::after{left:-5px}
-    .treatment .num{font-size:.72rem;letter-spacing:.12em;color:var(--champagne)}
+    .treatment:nth-of-type(odd) .inner{grid-column:1;justify-self:end;text-align:right}
+    .treatment:nth-of-type(even) .inner{grid-column:3;justify-self:start}
     .treatment h3{font-size:clamp(1.8rem,3vw,3.3rem);margin:.2rem 0 .4rem}
     .treatment p{font-size:.92rem;color:var(--muted)}
 
@@ -134,7 +142,8 @@
     .precision .lens{position:absolute;width:360px;aspect-ratio:1;border:1px solid rgba(198,165,109,.35);border-radius:50%;right:-120px;top:-80px}
     .precision-tags{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem;font-size:.77rem;letter-spacing:.08em;text-transform:uppercase;color:#d9c6a7}
 
-    .results-head{display:flex;justify-content:space-between;gap:2rem;align-items:end;margin-bottom:2rem}
+    .results-head{display:grid;grid-template-columns:minmax(0,2fr) minmax(15rem,1fr);gap:clamp(2rem,7vw,7rem);align-items:center;margin-bottom:2.8rem}
+    .results-head>p{justify-self:end;padding:.2rem 0 .2rem 1.25rem;border-left:1px solid var(--champagne);font-size:.9rem;max-width:34ch}
     .results-collage{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:110px;gap:1rem}
     .result-a{grid-column:1/7;grid-row:1/6;border-radius:36% 8% 8% 8% / 24% 8% 8% 8%}
     .result-b{grid-column:8/13;grid-row:2/5;border-radius:8% 38% 8% 8% / 8% 30% 8% 8%}
@@ -148,10 +157,14 @@
     .clinic-c{grid-column:9/13;grid-row:5/8;border-radius:10%}
     .clinic-d{grid-column:3/8;grid-row:7/9;border-radius:10% 10% 38% 10% / 10% 10% 30% 10%}
 
-    .social{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:end}
-    .rating{grid-column:1/5;font-family:var(--serif);font-size:clamp(4rem,9vw,8rem);line-height:.8;color:var(--champagne)}
+    .trust{overflow:hidden}
+    .social{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:center}
+    .trust-mark{position:relative;grid-column:1/6;min-height:240px;display:flex;align-items:center}
+    .trust-word{position:relative;z-index:1;margin-left:clamp(6.5rem,8vw,7rem);font-family:var(--serif);font-size:clamp(3rem,6vw,5.8rem);line-height:.9;color:var(--champagne)}
+    .trust-tooth{position:absolute;left:-28%;top:50%;width:58%;height:118%;transform:translateY(-50%);fill:none;stroke:rgba(198,165,109,.25);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
     .social-copy{grid-column:6/13}
     .social-copy p{margin-top:1rem}
+    .trust-note{font-family:var(--serif);font-size:1.05rem;color:var(--taupe)}
 
     .location{background:#eee3d5}
     .location-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:center}
@@ -169,6 +182,73 @@
     footer{padding:2.4rem 0;background:#211f1d;color:#d7d0c7;font-size:.82rem}
     .footer-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
 
+    @media (min-width:921px){
+      .hero{padding-top:clamp(5rem,7vw,7rem);padding-bottom:2.5rem}
+      .hero-grid{grid-template-columns:repeat(12,1fr);gap:clamp(1rem,2vw,1.75rem)}
+      .hero-copy{grid-column:1/7;padding-left:clamp(0rem,1vw,1rem)}
+      .hero-copy h1{font-size:clamp(3.8rem,6vw,6.3rem);max-width:9.6ch}
+      .hero-copy p{max-width:43ch}
+      .hero-visual{grid-column:7/13;min-height:540px}
+      .hero-photo{min-height:540px}
+
+      .pillars{padding-top:0;padding-bottom:clamp(4.5rem,7vw,6rem)}
+      .pillar-track{width:min(960px,92%);margin-inline:auto;gap:1rem clamp(4rem,9vw,8rem);padding:2.2rem clamp(2rem,5vw,4.5rem);border-block:1px solid rgba(117,106,95,.12)}
+      .pillar{min-height:76px;display:flex;align-items:center;padding:.6rem 1.25rem;border-bottom:0}
+      .pillar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+      .pillar:nth-child(even){transform:translateY(1rem)}
+      .pillar:nth-child(3){padding-left:clamp(2rem,5vw,4rem)}
+      .pillar strong{margin-top:0;max-width:15ch}
+
+      .experience{padding:clamp(5rem,7vw,7rem) 0}
+      .experience-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:0}
+      .experience-photo{grid-column:1;min-height:460px}
+      .experience-copy{grid-column:2;margin-left:-2rem;padding:clamp(2.4rem,3.2vw,3.25rem);transform:none;background:rgba(255,253,252,.86);box-shadow:-10px 14px 34px rgba(75,64,54,.035)}
+      .experience-copy h2{max-width:10ch}
+      .experience-copy p{max-width:48ch}
+      .notes{gap:.35rem 1.8rem;margin-top:2rem}
+      .note{padding:.8rem 0}
+
+      .treatments{padding:clamp(5rem,7vw,7rem) 0}
+      .treat-head{grid-template-columns:minmax(0,1.1fr) minmax(18rem,.7fr);gap:clamp(3rem,8vw,8rem);margin-bottom:2rem}
+      .treat-head>p{justify-self:end;max-width:40ch}
+      .treat-path{width:min(1040px,94%);margin-inline:auto}
+      .treatment{min-height:98px}
+      .treatment .inner{width:min(100%,450px);padding:.65rem 2.4rem}
+
+      .amanda{padding:clamp(5rem,7vw,7rem) 0}
+      .amanda-grid{position:relative;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:0}
+      .amanda-grid::before{content:"";position:absolute;z-index:0;left:2%;top:-4%;width:44%;aspect-ratio:1;border:1px solid rgba(198,165,109,.48);border-radius:50%;pointer-events:none}
+      .amanda-photo{grid-column:1;min-height:520px;z-index:1}
+      .amanda-copy{grid-column:2;margin-left:-2rem;padding:clamp(2.6rem,3.8vw,3.8rem);transform:none;background:rgba(247,243,236,.82);box-shadow:0 14px 36px rgba(75,64,54,.035)}
+      .amanda-copy p{max-width:48ch}
+
+      .precision-grid{column-gap:clamp(2rem,5vw,5rem)}
+      .precision-copy{grid-column:1/7;padding-left:clamp(0rem,2vw,2rem)}
+      .precision-copy h2{max-width:8ch}
+      .precision-copy p{max-width:38ch}
+      .precision-photo{grid-column:7/13;min-height:490px;box-shadow:0 28px 70px rgba(0,0,0,.18)}
+      .precision-photo img{object-position:50% 38%}
+
+      .results-head{position:relative;display:block;margin-bottom:2rem}
+      .results-head h2{max-width:9ch}
+      .results-head + .results-collage{grid-auto-rows:70px;width:min(1000px,92%);margin-inline:auto}
+      .result-a,.result-b,.result-c{box-shadow:0 20px 50px rgba(75,64,54,.06)}
+      .result-a{grid-column:1/8;grid-row:1/7}
+      .result-b{grid-column:8/13;grid-row:1/4;transform:none}
+      .result-c{grid-column:8/13;grid-row:4/7;transform:none}
+
+      .clinic{padding:clamp(5rem,7vw,7rem) 0}
+      .clinic-head{position:relative;grid-template-columns:minmax(0,1.1fr) minmax(20rem,.7fr);align-items:end;gap:clamp(3rem,8vw,8rem);margin-bottom:2.5rem}
+      .clinic-head h2{max-width:10ch}
+      .clinic-head>p{justify-self:end;max-width:40ch;padding-left:1.25rem;border-left:1px solid var(--champagne)}
+      .clinic-head::after{content:"";position:absolute;left:clamp(18rem,32vw,27rem);bottom:.4rem;width:2.8rem;height:3.4rem;background:repeating-linear-gradient(90deg,rgba(184,146,85,.5) 0 1px,transparent 1px 10px);pointer-events:none}
+      .clinic-collage{grid-auto-rows:64px;width:min(1040px,94%);margin-inline:auto}
+      .clinic-a{grid-column:1/7;grid-row:1/6}
+      .clinic-b{grid-column:8/13;grid-row:1/5}
+      .clinic-c{grid-column:7/11;grid-row:5/7}
+      .clinic-d{grid-column:2/7;grid-row:6/8}
+    }
+
     @media (max-width:920px){
       .nav-links{display:none}
       .hero-grid,.experience-grid,.amanda-grid,.precision-grid,.location-grid{grid-template-columns:1fr}
@@ -178,11 +258,16 @@
       .experience-copy,.amanda-copy{margin-top:-3rem;margin-left:8%;padding:2rem}
       .treat-head,.clinic-head{grid-template-columns:1fr}
       .social{grid-template-columns:1fr}
-      .rating,.social-copy{grid-column:1}
+      .trust-mark,.social-copy{grid-column:1}
+      .trust-mark{min-height:150px}
+      .trust-word{margin-left:2rem}
+      .trust-tooth{left:-8%;width:34%;height:105%;opacity:.55}
       .precision-photo{margin-top:2rem}
       .pillar-track{grid-template-columns:1fr 1fr}
-      .pillar-track::before{display:none}
-      .pillar:nth-child(even){transform:none}
+      .results-head{grid-template-columns:minmax(0,1.6fr) minmax(13rem,1fr);gap:2rem}
+      .hero-photo img{object-position:50% 30%}
+      .amanda-photo img{object-position:50% 24%}
+      .precision-photo img{object-position:50% 38%}
     }
 
     @media (max-width:640px){
@@ -190,22 +275,40 @@
       .hero{padding-top:3rem}
       .hero-visual{min-height:400px}
       .hero-photo{min-height:400px}
-      .pillar-track{grid-template-columns:1fr;gap:1rem}
-      .pillar{padding:.2rem 0 .7rem;border-bottom:1px solid var(--line)}
+      .hero-copy .hero-actions{gap:.45rem}
+      .hero-copy .hero-actions .btn{flex:1 1 0;min-width:0;padding:.72rem .5rem;font-size:clamp(.7rem,3.1vw,.82rem)}
+      .pillar-track{grid-template-columns:1fr 1fr;gap:.5rem 1rem;padding:1rem 0 2rem}
+      .pillar{padding:.45rem .15rem .7rem}
+      .pillar:nth-child(even){transform:translateY(1rem)}
+      .pillar:nth-child(3){padding-left:1rem}
       .experience-copy,.amanda-copy{margin:-1.6rem 0 0 1rem;padding:1.25rem}
       .experience-photo{min-height:420px}
       .amanda-photo{min-height:520px}
       .notes{grid-template-columns:1fr}
-      .treat-path::before{left:1.2rem}
-      .treatment{grid-template-columns:1fr;min-height:auto;padding:1.2rem 0}
-      .treatment .inner,.treatment:nth-child(odd) .inner,.treatment:nth-child(even) .inner{grid-column:1;justify-self:stretch;text-align:left;padding:1rem 0 1rem 2.5rem;max-width:none}
-      .treatment .inner::after,.treatment:nth-child(odd) .inner::after,.treatment:nth-child(even) .inner::after{left:calc(1.2rem - 5px);right:auto}
+      .treat-path svg{left:0;width:3.5rem;transform:none}
+      .treatment{min-height:6.25rem;grid-template-columns:3.5rem 1fr;padding:0}
+      .treatment .inner,.treatment:nth-of-type(odd) .inner,.treatment:nth-of-type(even) .inner{grid-column:2;justify-self:stretch;text-align:left;padding:.8rem 0 .8rem 1rem;max-width:none}
+      .treatment:nth-of-type(even) .inner{margin-left:0}
+      .results-head{grid-template-columns:1fr;gap:1.2rem;margin-bottom:2rem}
+      .results-head>p{justify-self:start;margin-left:1rem}
       .results-collage{grid-auto-rows:80px}
       .result-a{grid-column:1/10;grid-row:1/6}.result-b{grid-column:5/13;grid-row:6/9}.result-c{grid-column:1/7;grid-row:9/11}
       .clinic-collage{grid-auto-rows:72px}
       .clinic-a{grid-column:1/11;grid-row:1/7}.clinic-b{grid-column:5/13;grid-row:7/11}.clinic-c{grid-column:1/7;grid-row:11/14}.clinic-d{grid-column:6/13;grid-row:14/17}
       .map-shape{min-height:340px;margin-top:1rem}
       .footer-grid{flex-direction:column}
+      .hero-photo img{object-position:52% 28%}
+      .experience-photo img{object-position:50% 46%}
+      .amanda-photo img{object-position:50% 20%}
+      .precision-photo img{object-position:52% 36%}
+      .clinic-b img{object-position:50% 45%}
+    }
+
+    @media (max-width:430px){
+      .social{row-gap:1.25rem}
+      .trust-mark{min-height:auto}
+      .trust-word{margin-left:0}
+      .trust-tooth{display:none}
     }
 
     @media (prefers-reduced-motion:reduce){
@@ -233,15 +336,15 @@
       <div class="shell hero-grid">
         <div class="hero-copy">
           <div class="eyebrow">Vitale Odontologia · Monte Carmelo</div>
-          <h1>Precisão para cuidar. Naturalidade para transformar.</h1>
+          <h1><span class="hero-title__precision">Precisão</span> para cuidar. <span class="hero-title__natural">Naturalidade</span> para transformar.</h1>
           <p class="muted">Odontologia conduzida com técnica, atenção individual e uma experiência pensada para acolher em cada etapa.</p>
           <div class="hero-actions">
             <a class="btn primary" href="https://wa.me/553493016000">Agendar pelo WhatsApp</a>
             <a class="btn secondary" href="#tratamentos">Conhecer tratamentos</a>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="placeholder hero-photo" data-label="slot · hero Amanda"></div>
+        <div class="hero-visual">
+          <div class="placeholder asset--filled hero-photo" data-asset-slot="hero-amanda"><img src="assets/images/vitale/hero-amanda.webp" alt="Dra. Amanda Neves Barbosa na Vitale Odontologia" loading="eager" fetchpriority="high" /></div>
           <div class="ring"></div><div class="ring2"></div>
         </div>
       </div>
@@ -249,16 +352,16 @@
 
     <div class="shell pillars" aria-label="Pilares Vitale">
       <div class="pillar-track">
-        <div class="pillar"><span class="num">01</span><strong>Cuidado individual</strong></div>
-        <div class="pillar"><span class="num">02</span><strong>Precisão clínica</strong></div>
-        <div class="pillar"><span class="num">03</span><strong>Tecnologia aplicada</strong></div>
-        <div class="pillar"><span class="num">04</span><strong>Resultados naturais</strong></div>
+        <div class="pillar"><strong>Cuidado individual</strong></div>
+        <div class="pillar"><strong>Precisão clínica</strong></div>
+        <div class="pillar"><strong>Tecnologia aplicada</strong></div>
+        <div class="pillar"><strong>Resultados naturais</strong></div>
       </div>
     </div>
 
     <section class="experience">
       <div class="shell experience-grid">
-        <div class="placeholder experience-photo" data-label="slot · arquitetura Vitale"></div>
+        <div class="placeholder asset--filled experience-photo" data-asset-slot="clinic-reception"><img src="assets/images/vitale/clinic-reception.webp" alt="Recepção da Vitale Odontologia" loading="lazy" decoding="async" /></div>
         <div class="experience-copy">
           <div class="eyebrow">Experiência Vitale</div>
           <h2>Odontologia que une ciência, precisão e cuidado.</h2>
@@ -277,26 +380,30 @@
       <div class="shell">
         <div class="treat-head">
           <div><div class="eyebrow">Tratamentos</div><h2>Cuidado guiado por precisão.</h2></div>
-          <p class="muted">O percurso abaixo funciona como referência de linguagem: menos caixas, mais fluxo visual e hierarquia editorial.</p>
+          <p class="muted">Tratamentos planejados de forma individual, com técnica, precisão e atenção em cada etapa.</p>
         </div>
         <div class="treat-path">
-          <article class="treatment"><div class="inner"><div class="num">01</div><h3>Endodontia</h3><p>Abordagem cuidadosa e planejamento detalhado em cada etapa.</p></div></article>
-          <article class="treatment"><div class="inner"><div class="num">02</div><h3>Cirurgia</h3><p>Condutas definidas com critério, segurança e atenção individual.</p></div></article>
-          <article class="treatment"><div class="inner"><div class="num">03</div><h3>Implantes</h3><p>Planejamento orientado à função, estabilidade e naturalidade.</p></div></article>
-          <article class="treatment"><div class="inner"><div class="num">04</div><h3>Reabilitação Oral</h3><p>Integração entre estética, função e cuidado ao longo do processo.</p></div></article>
-          <article class="treatment"><div class="inner"><div class="num">05</div><h3>Estética Dental</h3><p>Resultados equilibrados, respeitando proporções e identidade do sorriso.</p></div></article>
-          <article class="treatment"><div class="inner"><div class="num">06</div><h3>Sedação</h3><p>Recurso complementar dentro de um atendimento planejado e acolhedor.</p></div></article>
+          <svg aria-hidden="true" viewBox="0 0 100 600" preserveAspectRatio="none">
+            <path d="M50 0 C49 42 53 75 50 112 C47 155 51 188 49 228 C47 271 52 310 50 351 C48 397 52 434 49 477 C47 520 50 559 50 600"/>
+            <path class="root-accessory" d="M50 66 C43 75 43 88 37 99 C34 105 29 110 25 117 M38 97 C43 106 43 114 40 122 M50 154 C58 162 59 175 66 184 C70 190 76 194 80 201 M65 183 C62 194 64 203 70 210 M49 247 C42 256 40 268 34 278 M50 340 C58 349 58 359 64 368 C68 375 73 379 77 387 M63 367 C58 378 59 387 64 395 M49 444 C42 452 41 464 35 473 C31 478 27 482 23 487 M49 535 C55 542 57 552 63 559"/>
+          </svg>
+          <article class="treatment"><div class="inner"><h3>Endodontia</h3><p>Abordagem cuidadosa e planejamento detalhado em cada etapa.</p></div></article>
+          <article class="treatment"><div class="inner"><h3>Cirurgia</h3><p>Condutas definidas com critério, segurança e atenção individual.</p></div></article>
+          <article class="treatment"><div class="inner"><h3>Implantes</h3><p>Planejamento orientado à função, estabilidade e naturalidade.</p></div></article>
+          <article class="treatment"><div class="inner"><h3>Reabilitação Oral</h3><p>Integração entre estética, função e cuidado ao longo do processo.</p></div></article>
+          <article class="treatment"><div class="inner"><h3>Estética Dental</h3><p>Resultados equilibrados, respeitando proporções e identidade do sorriso.</p></div></article>
+          <article class="treatment"><div class="inner"><h3>Sedação</h3><p>Recurso complementar dentro de um atendimento planejado e acolhedor.</p></div></article>
         </div>
       </div>
     </section>
 
     <section class="amanda" id="amanda">
       <div class="shell amanda-grid">
-        <div class="placeholder amanda-photo" data-label="slot · retrato Amanda"></div>
+        <div class="placeholder asset--filled amanda-photo" data-asset-slot="amanda-portrait"><img src="assets/images/vitale/amanda-portrait-bw.webp" alt="Dra. Amanda Neves Barbosa" loading="lazy" decoding="async" /></div>
         <div class="amanda-copy">
           <div class="eyebrow">Dra. Amanda Neves Barbosa</div>
           <h2>Autoridade técnica com presença humana.</h2>
-          <p class="muted">A proposta visual desta seção é editorial: retrato dominante, texto em zona segura e áreas de atuação sem chips ou cartões convencionais.</p>
+          <p class="muted">À frente da Vitale, Dra. Amanda Neves Barbosa conduz cada atendimento com técnica, atenção individual e cuidado em cada decisão clínica.</p>
           <div class="areas"><span>Endodontia</span><span>Cirurgia</span><span>Implantes</span><span>Reabilitação</span><span>Estética Dental</span></div>
         </div>
       </div>
@@ -311,44 +418,44 @@
           <p>Ciência, técnica e cuidado trabalhando juntos em cada etapa.</p>
           <div class="precision-tags"><span>Endodontia</span><span>Planejamento</span><span>Tecnologia aplicada</span></div>
         </div>
-        <div class="placeholder precision-photo" data-label="slot · Amanda em atendimento"></div>
+        <div class="placeholder asset--filled precision-photo" data-asset-slot="amanda-clinical-action"><img src="assets/images/vitale/amanda-clinical-action.webp" alt="Dra. Amanda Neves Barbosa durante atendimento odontológico" loading="lazy" decoding="async" /></div>
       </div>
     </section>
 
     <section>
       <div class="shell">
-        <div class="results-head"><div><div class="eyebrow">Resultados</div><h2>Naturalidade antes do exagero.</h2></div><p class="muted">Composição pensada para receber casos reais posteriormente, sem depender de um grid fotográfico convencional.</p></div>
+        <div class="results-head"><div><div class="eyebrow">Resultados</div><h2>Naturalidade antes do exagero.</h2></div></div>
         <div class="results-collage" aria-hidden="true">
-          <div class="placeholder result-a" data-label="slot · resultado 01"></div>
-          <div class="placeholder result-b" data-label="slot · resultado 02"></div>
-          <div class="placeholder result-c" data-label="slot · detalhe"></div>
+          <div class="placeholder result-a"></div>
+          <div class="placeholder result-b"></div>
+          <div class="placeholder result-c"></div>
         </div>
       </div>
     </section>
 
     <section class="clinic" id="clinica">
       <div class="shell">
-        <div class="clinic-head"><div><div class="eyebrow">A clínica</div><h2>Um espaço pensado para acolher.</h2></div><p class="muted">A galeria em degraus deve explorar madeira, champagne, luz quente e detalhes arquitetônicos reais da Vitale.</p></div>
-        <div class="clinic-collage" aria-hidden="true">
-          <div class="placeholder clinic-a" data-label="slot · recepção"></div>
-          <div class="placeholder clinic-b" data-label="slot · corredor"></div>
-          <div class="placeholder clinic-c" data-label="slot · detalhe"></div>
-          <div class="placeholder clinic-d" data-label="slot · fachada"></div>
+        <div class="clinic-head"><div><div class="eyebrow">A clínica</div><h2>Um espaço pensado para acolher.</h2></div><p class="muted">Ambientes pensados para acolher com conforto, leveza e atenção aos detalhes.</p></div>
+        <div class="clinic-collage">
+          <div class="placeholder clinic-a"></div>
+          <div class="placeholder asset--filled clinic-b" data-asset-slot="clinic-hall"><img src="assets/images/vitale/clinic-hall.webp" alt="Corredor interno da Vitale Odontologia" loading="lazy" decoding="async" /></div>
+          <div class="placeholder clinic-c"></div>
+          <div class="placeholder clinic-d"></div>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="trust">
       <div class="shell social">
-        <div class="rating">5.0</div>
-        <div class="social-copy"><div class="eyebrow">Prova social · estrutura provisória</div><h2>Confiança construída em cada atendimento.</h2><p class="muted">Este bloco é apenas estrutural. Quantidade de avaliações e depoimentos reais devem ser inseridos somente após validação atualizada.</p></div>
+        <div class="trust-mark"><svg class="trust-tooth" aria-hidden="true" viewBox="0 0 180 300"><path d="M72 18 C113 12 150 42 155 82 C159 113 143 133 135 158 C125 190 132 244 109 282 C103 292 95 286 92 272 C86 239 94 199 79 171"/></svg><div class="trust-word">Confiança</div></div>
+        <div class="social-copy"><h2>Cuidado que se constrói em cada encontro.</h2><p class="muted">Uma experiência conduzida com atenção, clareza e respeito em cada etapa do atendimento.</p><p class="trust-note">Técnica para cuidar. Presença para acolher.</p></div>
       </div>
     </section>
 
     <section class="location" id="contato">
       <div class="shell location-grid">
         <div class="location-copy"><div class="eyebrow">Monte Carmelo · MG</div><h2>Onde estamos.</h2><p>Vitale Odontologia<br>R. Rui Barbosa, 110A · Centro<br>Monte Carmelo — MG</p><div class="hero-actions"><a class="btn primary" href="https://maps.app.goo.gl/zNRLqkj5iDmSAQs87">Ver localização</a><a class="btn secondary" href="https://wa.me/553493016000">WhatsApp</a></div></div>
-        <div class="placeholder map-shape" data-label="mapa / localização"></div>
+        <div class="placeholder map-shape"></div>
       </div>
     </section>
 
@@ -358,7 +465,7 @@
   </main>
 
   <footer>
-    <div class="shell footer-grid"><div>Vitale Odontologia · Dra. Amanda Neves Barbosa</div><div>@dra.amandanevesb · (34) 9301-6000</div><div>Checkpoint base · AVERO Studio</div></div>
+    <div class="shell footer-grid"><div>Vitale Odontologia · Dra. Amanda Neves Barbosa</div><div>@dra.amandanevesb · (34) 9301-6000</div><div>Precisão · Naturalidade · Cuidado</div></div>
   </footer>
 </body>
 </html>
