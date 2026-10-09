@@ -70,7 +70,11 @@
     .precision-photo img{object-position:50% 42%}
     .clinic-b img{object-position:50% 50%}
     .asset--filled picture{position:absolute;inset:0;display:block}
-    .result-a img{object-position:50% 50%;object-fit:contain;background:var(--sand)}
+    .result-comparison{position:absolute;inset:0;display:grid;grid-template-rows:repeat(2,minmax(0,1fr))}
+    .result-comparison__view{position:relative;min-height:0;overflow:hidden}
+    .result-comparison__view + .result-comparison__view{border-top:1px solid var(--sand)}
+    .result-a .result-comparison__view img{width:200%;max-width:none;object-fit:cover;object-position:50% 58%}
+    .result-a .result-comparison__view--second img{left:-100%;object-position:50% 54%}
     .map-shape img{object-position:50% 50%;filter:saturate(.72) contrast(.94) brightness(1.03)}
     .result-b img{object-position:50% 50%}
     .result-c img{object-position:50% 46%}
@@ -440,7 +444,12 @@
       <div class="shell">
         <div class="results-head"><div><div class="eyebrow">Resultados</div><h2>Naturalidade antes do exagero.</h2></div></div>
         <div class="results-collage">
-          <div class="placeholder asset--filled result-a" data-asset-slot="result-before-after"><picture><source media="(max-width:640px)" srcset="assets/images/vitale/result-before-after-mobile.webp" /><img src="assets/images/vitale/result-before-after.webp" alt="Registro comparativo de resultado odontológico" loading="lazy" decoding="async" /></picture></div>
+          <div class="placeholder asset--filled result-a" data-asset-slot="result-before-after">
+            <div class="result-comparison" role="img" aria-label="Registro comparativo de resultado odontológico em duas imagens empilhadas">
+              <div class="result-comparison__view"><img src="assets/images/vitale/result-before-after.webp" alt="" loading="lazy" decoding="async" /></div>
+              <div class="result-comparison__view result-comparison__view--second"><img src="assets/images/vitale/result-before-after.webp" alt="" loading="lazy" decoding="async" /></div>
+            </div>
+          </div>
           <div class="placeholder asset--filled result-b" data-asset-slot="endodontia-detail"><img src="assets/images/vitale/endodontia-detail.webp" alt="Detalhe clínico de procedimento odontológico" loading="lazy" decoding="async" /></div>
           <div class="placeholder asset--filled result-c" data-asset-slot="clinical-treatment-context"><img src="assets/images/vitale/clinical-treatment-context.webp" alt="Atendimento odontológico na Vitale" loading="lazy" decoding="async" /></div>
         </div>
